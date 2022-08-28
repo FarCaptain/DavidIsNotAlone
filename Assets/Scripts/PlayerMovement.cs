@@ -8,14 +8,25 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
     public bool enableControl;
     public Rigidbody2D myRigidbody;
+    public GameObject indicator;
 
     private float horizontalMove = 0f;
     private bool jump = false;
+    private bool twoPlayer = false;
 
     private void Start()
     {
         myRigidbody.constraints = enableControl ? RigidbodyConstraints2D.FreezeRotation : 
             (RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation);
+
+        indicator.SetActive(enableControl);
+
+        var david = GameObject.Find("David");
+        var steve = GameObject.Find("Steve Variant");
+        if(david && steve)
+        {
+            twoPlayer = true;
+        }
     }
 
     private void Update()
@@ -27,11 +38,13 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
         }
 
-        if(Input.GetButtonDown("SwitchPlayer"))
+        if(twoPlayer && Input.GetButtonDown("SwitchPlayer"))
         {
             enableControl = !enableControl;
             myRigidbody.constraints = enableControl ? RigidbodyConstraints2D.FreezeRotation :
                 (RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation);
+
+            indicator.SetActive(enableControl);
         }
     }
 

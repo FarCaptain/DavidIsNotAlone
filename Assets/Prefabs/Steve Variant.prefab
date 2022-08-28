@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2189651511577085603, guid: 31f89832ae0624844abc4e1de48447ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861692069086511371, guid: 31f89832ae0624844abc4e1de48447ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6449707
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861692069086511371, guid: 31f89832ae0624844abc4e1de48447ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.679
+      objectReference: {fileID: 0}
     - target: {fileID: 6878023201790109361, guid: 31f89832ae0624844abc4e1de48447ab, type: 3}
       propertyPath: m_Name
       value: Steve Variant

@@ -206,6 +206,22 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -768913799
       objectReference: {fileID: 0}
+    - target: {fileID: 5325305935039612575, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25499994
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325305935039612575, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25517714
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325305935039612575, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0015775263
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325305935039612575, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.000607118
+      objectReference: {fileID: 0}
     - target: {fileID: 5325305935039612642, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
       propertyPath: colorGrade
       value: 1
@@ -302,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &39430760
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -389,7 +405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39430759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.583, y: -2.8917, z: 0}
+  m_LocalPosition: {x: 1.583, y: -4.298, z: 0}
   m_LocalScale: {x: 3.7710187, y: 0.04300591, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

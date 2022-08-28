@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -53,5 +54,11 @@ public class PlayerMovement : MonoBehaviour
         if(enableControl)
             controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+
+        if(transform.position.y < -15.0f)
+        {
+            // restart game
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

@@ -6,6 +6,12 @@ public class InnerColorBox : MonoBehaviour
 {
     public ColorBox colorBox;
     private bool isInBox = false;
+    private CameraShake cameraShake;
+
+    private void Start()
+    {
+        cameraShake = Camera.main.transform.GetComponent<CameraShake>();
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -16,6 +22,8 @@ public class InnerColorBox : MonoBehaviour
 
             // throw player out
             playerColor.myAnimator.SetTrigger("Jump");
+            StartCoroutine(cameraShake.Shake(.15f, .2f));
+
             isInBox = false;
             playerColor.applyLayer();
         }
@@ -36,6 +44,7 @@ public class InnerColorBox : MonoBehaviour
                 isInBox = true;
 
                 playerColor.myAnimator.SetTrigger("Jump");
+                StartCoroutine(cameraShake.Shake(.15f, .2f));
                 playerColor.colorGrade++;
                 playerColor.applyColor();
             }

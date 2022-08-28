@@ -14,14 +14,26 @@ public class ColorBox : MonoBehaviour
 
     private SpriteRenderer myRenderer;
     private Color myColor;
-    private Collider2D myCollider;
+    private string layerName = "Default";
+
+    private void Awake()
+    {
+        myRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Start()
     {
-        myRenderer = GetComponent<SpriteRenderer>();
-        myCollider = GetComponent<Collider2D>();
+        applyColor();
+        applyLayer();
+    }
 
-        string layerName = "Default";
+    public void applyColor()
+    {
+        if(myRenderer == null)
+        {
+            myRenderer = GetComponent<SpriteRenderer>();
+        }
+
         switch (colorTheme)
         {
             case ColorTheme.Blue:
@@ -35,29 +47,19 @@ public class ColorBox : MonoBehaviour
         }
 
         myRenderer.color = myColor;
+    }
+
+    public void applyLayer()
+    {
         gameObject.layer = LayerMask.NameToLayer(layerName);
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    GameObject player = collision.gameObject;
-    //    if (player.tag == "Player")
-    //    {
-    //        var playerColor = player.GetComponent<PlayerProperty>();
-    //        if(playerColor.colorTheme == colorTheme && playerColor.colorGrade == colorGrade )
-    //        {
-    //            // suck player in
-    //            isInBox = true;
-    //            //gameObject.layer = LayerMask.NameToLayer("RedColorBox");
-    //            playerColor.colorGrade++;
-    //            playerColor.applyColor();
-    //        }
-    //        else
-    //        {
-    //            gameObject.layer = LayerMask.NameToLayer("Default");
-    //        }
-    //    }
-    //}
+    private void OnValidate()
+    {
+        applyColor();
+        applyLayer();
+    }
+
 }
 
 public enum ColorTheme

@@ -1217,12 +1217,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5325305935039612573, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
+      propertyPath: m_Color.b
+      value: 0.47450984
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325305935039612573, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
+      propertyPath: m_Color.g
+      value: 0.47450984
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325305935039612573, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
+      propertyPath: m_Color.r
+      value: 0.92549026
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325305935039612573, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5325305935039612573, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
       propertyPath: m_SortingLayerID
       value: -768913799
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325305935039612642, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
+      propertyPath: colorGrade
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5325305935039612643, guid: 821731ba7310cef4891901a9d1222f67, type: 3}
       propertyPath: m_Name

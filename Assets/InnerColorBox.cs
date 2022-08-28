@@ -22,6 +22,7 @@ public class InnerColorBox : MonoBehaviour
 
             // throw player out
             playerColor.myAnimator.SetTrigger("Pop");
+            AudioManager.instance.Play("Pop");
             StartCoroutine(cameraShake.Shake(.15f, .2f));
 
             isInBox = false;
@@ -44,6 +45,7 @@ public class InnerColorBox : MonoBehaviour
                 isInBox = true;
 
                 playerColor.myAnimator.SetTrigger("Pop");
+                AudioManager.instance.Play("Pop");
                 StartCoroutine(cameraShake.Shake(.15f, .2f));
                 playerColor.colorGrade++;
                 playerColor.applyColor();

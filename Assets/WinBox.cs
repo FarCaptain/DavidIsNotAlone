@@ -58,6 +58,7 @@ public class WinBox : MonoBehaviour
             else
             {
                 //Warn
+                AudioManager.instance.Play("Wrong");
             }
         }
     }

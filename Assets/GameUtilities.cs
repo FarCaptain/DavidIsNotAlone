@@ -17,4 +17,9 @@ public class GameUtilities : MonoBehaviour
             SceneManager.LoadScene(currentScene.name);
         }
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(currentScene.buildIndex + 1);
+    }
 }

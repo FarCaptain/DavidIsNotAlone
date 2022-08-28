@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class WinState : MonoBehaviour
 {
@@ -14,6 +15,15 @@ public class WinState : MonoBehaviour
     public UnityEvent winEvent;
 
     private bool isSucking = false;
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     void Start()
     {
@@ -59,7 +69,15 @@ public class WinState : MonoBehaviour
             SteveAnim.transform.parent.position = SteveWin.transform.position;
         }
 
+        AudioManager.instance.Play("Correct");
+
         yield return new WaitForSeconds(1.3f);
+
         winEvent?.Invoke();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //isSucking = false;
     }
 }

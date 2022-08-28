@@ -37,9 +37,10 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump"))
         {
             jump = true;
+            AudioManager.instance.Play("Jump");
         }
 
-        if(twoPlayer && Input.GetButtonDown("SwitchPlayer"))
+        if (twoPlayer && Input.GetButtonDown("SwitchPlayer"))
         {
             enableControl = !enableControl;
             myRigidbody.constraints = enableControl ? RigidbodyConstraints2D.FreezeRotation :
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         if(transform.position.y < -15.0f)
         {
             // restart game
+            AudioManager.instance.Play("Die");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

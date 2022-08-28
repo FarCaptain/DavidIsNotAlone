@@ -21,7 +21,7 @@ public class InnerColorBox : MonoBehaviour
             var playerColor = player.GetComponent<PlayerProperty>();
 
             // throw player out
-            playerColor.myAnimator.SetTrigger("Jump");
+            playerColor.myAnimator.SetTrigger("Pop");
             StartCoroutine(cameraShake.Shake(.15f, .2f));
 
             isInBox = false;
@@ -43,7 +43,7 @@ public class InnerColorBox : MonoBehaviour
                 // suck player in
                 isInBox = true;
 
-                playerColor.myAnimator.SetTrigger("Jump");
+                playerColor.myAnimator.SetTrigger("Pop");
                 StartCoroutine(cameraShake.Shake(.15f, .2f));
                 playerColor.colorGrade++;
                 playerColor.applyColor();

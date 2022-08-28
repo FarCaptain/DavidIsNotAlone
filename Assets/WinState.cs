@@ -8,25 +8,58 @@ public class WinState : MonoBehaviour
     private WinBox DavidWin;
     private WinBox SteveWin;
 
+    private Animator DavidAnim;
+    private Animator SteveAnim;
+
     public UnityEvent winEvent;
+
+    private bool isSucking = false;
 
     void Start()
     {
-        var david = GameObject.Find("DavidWin");
-        if(david)
-            DavidWin = david.GetComponent<WinBox>();
+        var davidwin = GameObject.Find("DavidWin");
+        if(davidwin)
+            DavidWin = davidwin.GetComponent<WinBox>();
 
-        var steve = GameObject.Find("SteveWin");
+        var stevewin = GameObject.Find("SteveWin");
+        if (stevewin)
+            SteveWin = stevewin.GetComponent<WinBox>();
+
+        var david = GameObject.Find("David");
+        if (david)
+            DavidAnim = david.GetComponentInChildren<Animator>();
+        var steve = GameObject.Find("Steve Variant");
         if (steve)
-            SteveWin = steve.GetComponent<WinBox>();
+            SteveAnim = steve.GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
-        if((DavidWin == null || DavidWin.IsInBox()) && (SteveWin == null || SteveWin.IsInBox()))
+        if(!isSucking && (DavidWin == null || DavidWin.IsInBox()) && (SteveWin == null || SteveWin.IsInBox()))
         {
+            isSucking = true;
+            StartCoroutine(waiter());
             Debug.Log("Actually Win!!!!");
-            winEvent?.Invoke();
         }
+    }
+
+    IEnumerator waiter()
+    {
+        if (DavidAnim)
+        {
+            DavidAnim.SetTrigger("Shrink");
+            DavidAnim.transform.parent.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
+            DavidAnim.transform.parent.position = DavidWin.transform.position;
+        }
+        if (SteveAnim)
+        {
+            SteveAnim.SetTrigger("Shrink");
+            SteveAnim.transform.parent.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            SteveAnim.transform.parent.position = SteveWin.transform.position;
+        }
+
+        yield return new WaitForSeconds(1.3f);
+        winEvent?.Invoke();
     }
 }

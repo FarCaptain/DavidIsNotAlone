@@ -11,6 +11,8 @@ public class WinBox : MonoBehaviour
 
     public SpriteRenderer myRenderer;
 
+    private bool isInBox = false;
+
     private Color myColor;
     private string layerName = "Default";
 
@@ -18,6 +20,11 @@ public class WinBox : MonoBehaviour
     {
         // init
         applyColor();
+    }
+
+    public bool IsInBox()
+    {
+        return isInBox;
     }
 
     public void applyColor()
@@ -46,10 +53,24 @@ public class WinBox : MonoBehaviour
             {
                 //Win
                 Debug.Log("Win!");
+                isInBox = true;
             }
             else
             {
                 //Warn
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        var player = collision.gameObject;
+        if (player.tag == "Player")
+        {
+            if (player.layer == LayerMask.NameToLayer(layerName))
+            {
+                // left the box
+                isInBox = false;
             }
         }
     }

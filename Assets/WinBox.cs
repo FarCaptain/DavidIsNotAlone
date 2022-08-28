@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProperty : MonoBehaviour
+public class WinBox : MonoBehaviour
 {
     public ColorCode colorCode;
     public ColorTheme colorTheme;
@@ -10,7 +10,6 @@ public class PlayerProperty : MonoBehaviour
     public int colorGrade;
 
     public SpriteRenderer myRenderer;
-    public Animator myAnimator;
 
     private Color myColor;
     private string layerName = "Default";
@@ -19,7 +18,6 @@ public class PlayerProperty : MonoBehaviour
     {
         // init
         applyColor();
-        applyLayer();
     }
 
     public void applyColor()
@@ -39,14 +37,25 @@ public class PlayerProperty : MonoBehaviour
         myRenderer.color = myColor;
     }
 
-    public void applyLayer()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.layer = LayerMask.NameToLayer(layerName);
+        var player = collision.gameObject;
+        if(player.tag == "Player")
+        {
+            if(player.layer == LayerMask.NameToLayer(layerName))
+            {
+                //Win
+                Debug.Log("Win!");
+            }
+            else
+            {
+                //Warn
+            }
+        }
     }
 
     private void OnValidate()
     {
         applyColor();
-        applyLayer();
     }
 }

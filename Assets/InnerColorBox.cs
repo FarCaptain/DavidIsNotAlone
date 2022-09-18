@@ -5,7 +5,7 @@ using UnityEngine;
 public class InnerColorBox : MonoBehaviour
 {
     public ColorBox colorBox;
-    private bool isInBox = false;
+    private GameObject objectInBox;
     private CameraShake cameraShake;
 
     private void Start()
@@ -15,9 +15,9 @@ public class InnerColorBox : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(isInBox)
+        GameObject player = collision.gameObject;
+        if (objectInBox && objectInBox == player)
         {
-            GameObject player = collision.gameObject;
             var playerColor = player.GetComponent<PlayerProperty>();
 
             // throw player out
@@ -25,14 +25,14 @@ public class InnerColorBox : MonoBehaviour
             AudioManager.instance.Play("Pop");
             StartCoroutine(cameraShake.Shake(.15f, .2f));
 
-            isInBox = false;
+            objectInBox = null;
             playerColor.applyLayer();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isInBox)
+        if (objectInBox)
             return;
 
         GameObject player = collision.gameObject;
@@ -42,7 +42,7 @@ public class InnerColorBox : MonoBehaviour
             if (playerColor.colorTheme == colorBox.colorTheme && playerColor.colorGrade == colorBox.colorGrade)
             {
                 // suck player in
-                isInBox = true;
+                objectInBox = player;
 
                 playerColor.myAnimator.SetTrigger("Pop");
                 AudioManager.instance.Play("Pop");

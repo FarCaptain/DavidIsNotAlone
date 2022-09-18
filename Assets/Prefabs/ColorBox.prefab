@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 7379778925870509762}
   - component: {fileID: 7379778925870509821}
   - component: {fileID: 7379778925870509820}
+  - component: {fileID: 2935253854995589327}
   m_Layer: 6
   m_Name: ColorBox
   m_TagString: Untagged
@@ -254,3 +255,24 @@ MonoBehaviour:
   colorTheme: 1
   colorGrade: 0
   isInBox: 0
+--- !u!50 &2935253854995589327
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379778925870509823}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7

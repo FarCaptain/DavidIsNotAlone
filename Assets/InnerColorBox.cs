@@ -27,6 +27,10 @@ public class InnerColorBox : MonoBehaviour
 
             objectInBox = null;
             playerColor.applyLayer();
+
+
+            CharacterController2D cc = player.GetComponent<CharacterController2D>();
+            cc.m_WhatIsGround = ~0; //Everything
         }
     }
 
@@ -49,6 +53,9 @@ public class InnerColorBox : MonoBehaviour
                 StartCoroutine(cameraShake.Shake(.15f, .2f));
                 playerColor.colorGrade++;
                 playerColor.applyColor();
+
+                CharacterController2D cc = player.GetComponent<CharacterController2D>();
+                cc.m_WhatIsGround = LayerMask.GetMask("Default");
             }
         }
     }
